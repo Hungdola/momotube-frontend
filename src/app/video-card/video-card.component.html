@@ -1,0 +1,35 @@
+<!-- <mat-card class="example-card" routerLink="/video-detail/{{video.id}}">
+    <img mat-card-image [src]="video.thumbnailUrl" alt="Thumbnail">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{video.title}}</mat-card-title>
+      <mat-card-subtitle>Hungtran Immortel</mat-card-subtitle>
+      <mat-card-subtitle>1M views</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card> -->
+
+  <!-- <div class="content-wrapper">
+    <div class="content-section">
+      <div class="apps-card"> -->
+        <div class="app-card" routerLink="/video-detail/{{video.id}}">
+          <div>
+            <img src="{{video.thumbnailUrl}}" alt="">
+          </div>
+          <div class="flex-div">
+            <div class="chanel-img">
+              <img src= {{video.thumbnailUrl}} alt="">
+            </div>
+            <div class="vid-info">
+              <div>
+                {{video.title}}
+              </div>
+              <div class="content-text">
+                <p>Hung tran</p>
+                <p>{{video.viewCount}} View - 2 day ago</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- </div>
+    </div>
+  </div> -->

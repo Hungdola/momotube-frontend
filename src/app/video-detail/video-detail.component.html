@@ -1,19 +1,124 @@
-<div fxLayout="row">
-    <div fxFlex="70%" class="video-detail">
+<!-- <div fxLayout="row">
+    <div fxFlex="65%" class="video-detail">
+      <div fxLayout="column" fxLayoutGap="8px">
         <app-video-player *ngIf="videoAvailable" [videoUrl]="videoUrl"></app-video-player>
         <div class="mat-title">{{videoTitle}}</div>
         <div fxLayout="row">
-            <div fxFlex="50%">
-                <div>31 Jul 2001</div>
-                <span>{{videoDescription}}</span>
-            </div>
-            <div fxFlex="50%">
-                
-            </div>
+          <div fxFlex="50%">
+            <span class="view-count">{{viewCount}}</span>
+            <span class="dot"></span>
+            <span class="video-upload-date">Apr 13, 2021</span>
+          </div>
+          <div fxFlex="50%" fxLayoutAlign="end">
+            <span class="like-dislike-section">
+                <button mat-icon-button class="thumbs-up" (click)="likeVideo()">
+                  <mat-icon>thumb_up_off_alt</mat-icon>
+                  {{likeCount}}
+                </button>
+                <button mat-icon-button class="thumbs-down" (click)="disLikeVideo()">
+                  <mat-icon>thumb_down_off_alt</mat-icon>
+                  {{dislikeCount}}
+                </button>
+            </span>
+          </div>
         </div>
+        <mat-divider></mat-divider>
+        <mat-card-header>
+          <mat-card-title>Programming Techie</mat-card-title>
+          <mat-card-subtitle class="subtitles">4.2K Subscribers</mat-card-subtitle>
+          <button *ngIf="showSubscribeButton" class="subscribe-button" mat-raised-button color="warn"
+           (click)="subscribeToUser()">SUBSCRIBE
+          </button>
+          <button *ngIf="showUnSubscribeButton" class="subscribe-button-clicked"
+                  mat-raised-button color="accent"
+                  (click)="unSubscribeToUser()">
+            UNSUBSCRIBE
+          </button>
+        </mat-card-header>
+        <div>{{videoDescription}}</div>
+        <mat-divider></mat-divider> -->
+        <!-- <mat-chip-list>
+          <mat-chip>Spring Boot</mat-chip>
+          <mat-chip>Angular</mat-chip>
+        </mat-chip-list>
+        <mat-divider></mat-divider> -->
+        <!-- <app-comment *ngIf="videoAvailable" [videoId]="videoId"></app-comment>
+      </div>
     </div>
     <div fxFlex="5%"></div>
-    <div fxFlex="25%">
-        Suggestions bar
+    <div fxFlex="30%" class="suggestion-bar">
     </div>
+  </div> -->
+  
+<div fxLayout="row" class="formvideo">
+  <!-- <div class="container play-contain"> -->
+    <div fxFlex="65%" class="video-detail">
+      <div class="play-vid">
+        <app-video-player *ngIf="videoAvailable" [videoUrl]="videoUrl"></app-video-player>
+      </div>
+      <div class="tags">
+        <a href="">#Web-pograming</a>
+        <a href="">#Web-designing</a>
+        <a href="">#Web-development</a>
+      </div>
+      <h3>{{videoTitle}}</h3>
+      <div class="play-info">
+        <p>{{viewCount}}k Views &bull; 1 days ago</p>
+        <div>
+          <button mat-icon-button class="thumbs-up" (click)="likeVideo()">
+            <mat-icon>thumb_up_off_alt</mat-icon> {{likeCount}}
+          </button>
+          <button mat-icon-button class="thumbs-down" (click)="disLikeVideo()">
+            <mat-icon>thumb_down_off_alt</mat-icon> {{dislikeCount}}
+          </button>
+        </div>
+      </div>
+      <hr>
+      <div class="owner">
+        <img src="" alt="">
+        <div>
+          <p>HUNG TRAN</p>
+          <span>1.2M Subscripber</span>
+        </div>
+        <button type="button" class="buttonred" *ngIf="showSubscribeButton" (click)="subscribeToUser()">SUBSCRIBE</button>
+        <button type="button" class="buttonxam" *ngIf="showUnSubscribeButton" (click)="unSubscribeToUser()">UNSUBSCRIBE</button>
+      </div>
+      <div class="description">
+        <p>A complate đã hoàn thành bạn ơi đi ngủ thôi</p>
+        <hr>
+        <!-- <h4>18 Comment</h4>
+        <div class="add-comment">
+          <img src="" alt="">
+          <input type="text" placeholder="Write Comment">
+        </div>
+        <div class="prev-comment">
+          <img src="" alt="">
+          <div>
+            <h3>Hung tran <span>45 min ago</span></h3>
+            <p>nhiều khi anh mong được một lần nói ra hết tất cả thay vì</p>
+          </div>
+        </div> -->
+        <app-comment *ngIf="videoAvailable" [videoId]="videoId"></app-comment>
+      </div>
+
+    </div>
+    <div fxFlex="1%"></div>
+    <!-- <div class="right-sidebar" fxFlex="34%"> -->
+      <!-- <div class="side-list">
+        <a href="" class="small-size"><img src="" class="thumbnail" alt=""></a>
+        <div class="video-info">
+          <a href="">Coding with Hung</a>
+          <p>Web break</p>
+          <p>5k views &bull; 1 days</p>
+        </div>
+      </div> -->
+      <div class="content-wrapper" fxFlex="34%">
+        <div class="content-section">
+          <div class="apps-card" *ngFor="let suggestVideo of suggestVideos">
+            <app-video-card-small [video]="suggestVideo"></app-video-card-small>
+            </div>
+      </div>
+    </div>
+  <!-- </div> -->
+
 </div>

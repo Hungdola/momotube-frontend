@@ -1,0 +1,30 @@
+<div class="video-card" id="myElement">
+    <img src="{{video.thumbnailUrl}}" alt="Video Thumbnail" class="video-thumbnail" routerLink="/video-detail/{{video.id}}">
+    <div class="video-info" routerLink="/video-detail/{{video.id}}">
+        <h3>{{video.title}}</h3>
+        <!-- <p>{{video.viewCount}}k</p> -->
+        <p>{{video.description}}</p>
+        <div class="channel-info">
+            <!-- <img src="https://placekitten.com/40/40" alt="Channel Avatar" class="channel-avatar"> -->
+            <!-- <div class="channel-name">HUNG TRAN</div> -->
+        </div>
+    </div>
+    <div class="itemsmall status">
+        <i class="fa-regular fa-eye iconwidth"></i>
+        <p class="namestatus">{{video.videoStatus}}</p>
+    </div>
+    <div class="itemsmall">
+        <p>None</p>
+    </div>
+    <div class="itemsmall">
+        <p>{{video.viewCount}}k</p>
+    </div>
+    <div class="itemsmall">
+        <p>{{video.likeCount}}</p>
+    </div>
+    <div class="itemsmall">
+        <p>{{video.dislikeCount}}</p>
+    </div>
+    <!-- <button mat-raised-button class="buttonred" (click)="deleteVideo(video.id)">Delete</button>
+    <button mat-raised-button class="buttonwhite" routerLink="/edit-video/{{video.id}}">Update</button> -->
+</div>

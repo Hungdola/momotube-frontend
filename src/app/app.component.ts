@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { OAuthService } from 'angular-oauth2-oidc';
-import { authConfig } from './auth.config';
+import { KeycloakService } from 'keycloak-angular';
+// import { OAuthService } from 'angular-oauth2-oidc';
+// import { authConfig } from './auth.config';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,9 +11,8 @@ import { authConfig } from './auth.config';
 export class AppComponent {
   title = 'youtube-clone-ui';
 
-  constructor(private oauthService: OAuthService) {
-    this.configure()
-  }
+  // constructor(private kcService: KeycloakService, securityService: SecurityService) {
+  // }
 
   // ngOnInit(): void {
   //   this.oidcSecurityService
@@ -22,17 +23,19 @@ export class AppComponent {
   //       /*...*/
   //     });  }
 
-  private configure() {
-    this.oauthService.configure(authConfig)
-    this.oauthService.loadDiscoveryDocumentAndTryLogin()
-  }
-  login() {
-    this.oauthService.initCodeFlow()
-  }
+  // private configure() {
+  //   this.oauthService.configure(authConfig)
+  //   this.oauthService.loadDiscoveryDocumentAndTryLogin()
+  // }
+  // login() {
+  //   this.kcService.login({
+  //     redirectUri: window.location.origin
+  //   })
+  // }
 
-  logout() {
-    this.oauthService.logOut()
-  }
+  // logout() {
+  //   this.kcService.logout(window.location.origin)
+  // }
 }
 
 

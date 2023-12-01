@@ -1,0 +1,25 @@
+a.active {
+    color: #000;
+    background-color: #e5e5e5;
+}
+
+a:hover {
+    background-color: #999ba5;
+}
+
+i{
+    width: 30px;
+    color: #ee7616;
+    margin-right: 8px;
+}
+
+a{
+    color: #f9fafb;
+    display: flex;
+    align-items: center;
+    font-size: 17px;
+    font-weight: 400;
+    padding: 10px;
+    border-radius: 6px;
+    transition: 0.3s;
+}

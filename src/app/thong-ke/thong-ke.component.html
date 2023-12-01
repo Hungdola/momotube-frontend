@@ -1,0 +1,33 @@
+<div class="right-side">
+    <div class="main-container">
+        <div class="main-header">
+            <div class="header-menu">
+                <div class="itname itbig">
+                    <p>Videos</p>
+                </div>
+                <div class="itname itsmall">
+                    <p>Visibility</p>
+                </div>
+                <div class="itname itsmall">
+                    <p>Restrictions</p>
+                </div>
+                <div class="itname itsmall">
+                    <p>Views</p>
+                </div>
+                <div class="itname itsmall">
+                    <p>Likes</p>
+                </div>
+                <div class="itname itsmall">
+                    <p>Dislikes</p>
+                </div>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="content-section">
+              <div class="apps-card" *ngFor="let myVideo of myVideos">
+                  <app-thong-ke-card [video]="myVideo"></app-thong-ke-card>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>

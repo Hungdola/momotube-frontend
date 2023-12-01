@@ -1,24 +1,30 @@
+import { KeycloakEventType, KeycloakService } from 'keycloak-angular';
 import { VideoService } from './../video.service';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { ActivatedRoute } from '@angular/router';
 import { VideoDto } from '../video-dto';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserService } from '../user.service';
+import { UserDto } from '../user-dto';
 
 @Component({
   selector: 'app-save-video-detail',
   templateUrl: './save-video-detail.component.html',
   styleUrls: ['./save-video-detail.component.css']
 })
-export class SaveVideoDetailComponent {
+export class SaveVideoDetailComponent implements OnInit {
+
+  userDto!: UserDto
 
 saveVideoDetailsForm: FormGroup
 title: FormControl = new FormControl()
 description: FormControl = new FormControl()
 videoStatus: FormControl = new FormControl()
+theloaiVideo: FormControl = new FormControl()
 addOnBlur = true;
 readonly separatorKeysCodes = [ENTER, COMMA] as const; //Kết hợp tất cả lại với nhau, dòng mã đang
   // xác định một mảng chỉ đọc có tên là SeparatorKeysCodes với hai phần tử, trong đó các phần tử có
@@ -31,20 +37,57 @@ videoId = ''
 fileSelected = false
 videoUrl!: string
 thumbnailUrl!: string;
+  accessToken!: string;
+  videoAvailable: boolean = false
 
-constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService, private matSnackbar: MatSnackBar){
-    this.videoId = this.activatedRoute.snapshot.params['videoId'];//gắn id trên route vào biến videoId
-    this.videoService.getVideo(this.videoId).subscribe(data => {
-      this.videoUrl = data.videoUrl;
-      this.thumbnailUrl = data.thumbnailUrl
-    })
+constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService, private matSnackbar: MatSnackBar, private userService: UserService){
+  // this.keycloakService.keycloakEvents$.subscribe((event) => {
+  //   if (event.type === KeycloakEventType.OnAuthSuccess) {
+      // setTimeout(() => {
+          this.videoId = this.activatedRoute.snapshot.params['videoId'];//gắn id trên route vào biến videoId
+          this.videoService.getVideo(this.videoId).subscribe(data => {
+            this.videoUrl = data.videoUrl
+            this.thumbnailUrl = data.thumbnailUrl
+            this.videoAvailable = true
+          })
+        // }, 1900)
 
+  //   }
+  // });
     this.saveVideoDetailsForm = new FormGroup({
       title: this.title,
       description: this.description,
-      videoStatus: this.videoStatus
+      videoStatus: this.videoStatus,
+      theloaiVideo: this.theloaiVideo
     })
+
+
+
 }
+  ngOnInit(): void {
+    // setTimeout(() => {
+    //   this.keycloakService.isLoggedIn().then((loggedIn) => {
+    //     if (loggedIn) {
+    //       // Người dùng đã đăng nhập, có thể lấy access token
+    //       this.keycloakService.getToken().then((token) => {
+    //         this.accessToken = token;
+    //         console.log('Access Token:', token);
+    //       });
+    //     } else {
+    //       // Người dùng chưa đăng nhập
+    //       console.log('User not logged in');
+    //     }
+    //   })  
+
+    // }, 5000)
+    this.getCurrentUser()
+  }
+
+  getCurrentUser() {
+    this.userService.getCurrentUser().subscribe(data => {
+      this.userDto = data;
+    })
+  }
 
 announcer = inject(LiveAnnouncer);
 
@@ -75,12 +118,15 @@ onFileSelected($event: Event) {
 }
 
 onUpload() {
-  console.log(this.videoId)
-  this.videoService.uploadThumbnail(this.selectedFile, this.videoId)
-    .subscribe(data => {
-      console.log(data)
-      //show an upload success notification
-    })
+  // console.log(this.videoId)
+  // this.keycloakService.keycloakEvents$.subscribe((event) => {
+  //   if (event.type === KeycloakEventType.OnAuthSuccess) {
+      this.videoService.uploadThumbnail(this.selectedFile, this.videoId)
+      .subscribe(data => {
+        this.matSnackbar.open("thumbnail Updated Successfully", "OK")
+       })
+    //   }
+    // });
 }
 
 saveVideo() {
@@ -89,15 +135,24 @@ saveVideo() {
     "id": this.videoId,
     "title": this.saveVideoDetailsForm.get('title')?.value,
     "description": this.saveVideoDetailsForm.get('description')?.value,
+    "userId": this.userDto.id,
     "tags": this.tags,
     "videoStatus": this.saveVideoDetailsForm.get('videoStatus')?.value,
+    "theloaiVideo": this.saveVideoDetailsForm.get('theloaiVideo')?.value,
     "videoUrl": this.videoUrl,
-    "thumbnailUrl": this.thumbnailUrl
+    "thumbnailUrl": this.thumbnailUrl,
+    "likeCount": 0,
+      "dislikeCount": 0,
+      "viewCount": 0
   }
+  // this.keycloakService.keycloakEvents$.subscribe((event) => {
+  //   if (event.type === KeycloakEventType.OnAuthSuccess) {
+      this.videoService.saveVideo(videoMetadata).subscribe(data => {
+        this.matSnackbar.open("Video metadata Updated Successfully", "OK")
+      })
 
-  this.videoService.saveVideo(videoMetadata).subscribe(data => {
-    this.matSnackbar.open("Video metadata Updated Successfully", "OK")
-  })
+  //   }
+  // });
 }
 
 

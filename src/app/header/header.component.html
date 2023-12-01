@@ -1,15 +1,44 @@
-<mat-toolbar color="primary">
+<!-- <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <span>Youtube clone</span>
+      <span routerLink="/">Youtube clone</span>
       <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" routerLink="/upload-video">
         <mat-icon>video_call</mat-icon>
       </button>
       <button *ngIf="isAuthenticated; else noAuth" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
         <mat-icon>account_circle</mat-icon>
-      </button>
-      <ng-template #noAuth>
-        <button mat-raised-button (click)="login()">Login</button>
+      </button> -->
+      <!-- <a *ngIf="securityService.profile; else loginTemplate">{{securityService.profile.firstName}}</a> -->
+      <!-- <ng-template #noAuth #loginTemplate>
+        <button mat-raised-button (click)="login()" *ngIf="!securityService.profile">Login</button>
       </ng-template>
+      <br>
+        <button (click)="logout()" *ngIf="securityService.profile">Log out</button>
     </mat-toolbar-row>
-  </mat-toolbar>
+  </mat-toolbar> -->
+  
+
+<div class="header">
+  <div class="logo">
+    <a href="#"><i class="fa-solid fa-play"></i> Momotube</a>
+  </div>
+  <div class="search-bar">
+    <input type="text" placeholder="Search" #box (keyup.enter)="searchVideo(box.value)">
+    <a href="">
+      <i class="fa-solid fa-magnifying-glass" ></i>
+    </a>
+  </div>
+  <div class="header-profile">
+    <i class="fa-solid fa-video" (click)="routUpload()"></i>
+    <!-- <div class="notification">
+      <span class="notification-number">
+      5 </span>
+        <i class="fa-solid fa-bell"></i>
+    </div> -->
+    <i class="fa-solid fa-sun"></i>
+    <button mat-raised-button (click)="login()" *ngIf="!securityService.profile">Login</button>
+    <button mat-raised-button (click)="logout()" *ngIf="securityService.profile">Logout</button>
+    <div *ngIf="securityService.profile"><img class="profile-user" src="https://hungtran.s3.ap-southeast-1.amazonaws.com/0f3c63d6-4930-4139-9cdf-70084e20b066.jpg" alt=""></div>
+
+  </div>
+</div>

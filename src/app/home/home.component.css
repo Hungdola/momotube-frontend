@@ -1,0 +1,14 @@
+.sidenav-container {
+    height: 100%;
+    display: flex;
+}
+
+.sidebar {
+    position: fixed;
+    top: 72px;
+}
+
+.sidenav-content {
+    margin-left: 12rem;
+    padding: 16px;
+}

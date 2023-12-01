@@ -1,4 +1,290 @@
-.video-detail {
+/* .video-detail-header{
+    padding-top: 15px;
+  }
+  
+  .video-detail{
+    margin-top: 40px;
     margin-left: 100px;
-    margin-top: 50px;
-}
+  }
+  
+  .subtitles{
+    justify-content: space-between;
+  }
+  
+  mat-card[ng-reflect-router-link] {
+    cursor: pointer;
+  }
+  
+  .suggestion-bar {
+    margin-top: 10px;
+  }
+  
+  .subscribe-button {
+    height: 40px;
+    justify-content: right;
+  }
+  
+  .subscribe-button-clicked {
+    background-color: gray;
+    height: 40px;
+  }
+  
+  .view-count {
+    padding-right: 5px;
+  }
+  
+  .dot {
+    border-radius: 50%;
+    width: 5px;
+    height: 5px;
+    background-color: black;
+    display: inline-block;
+  }
+  
+  .video-upload-date{
+    padding-left: 5px;
+  }
+  
+  .thumbs-down {
+    padding-left: 15px;
+  }
+  
+  .like-dislike-section {
+    padding-right: 10px;
+  }
+   */
+
+   .formvideo {
+    margin-top: 68px;
+   }
+
+   .video-detail{
+    margin-top: 40px;
+    margin-left: 100px;
+  }
+
+   .right-sidebar{
+    flex-basis: 30%;
+    
+   }
+
+   .side-list {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+   }
+
+   .side-list img{
+    width: 100%;
+   }
+
+   .side-list .small-size {
+    flex-basis: 49%;
+   }
+
+   .side-list .video-info {
+    flex-basis: 49%;
+   }
+
+   .play-info p{
+    color: #fff;
+   }
+
+   .thumbs-up {
+    color: #fff;
+   }
+
+   .thumbs-down {
+    color: #fff;
+   }
+
+   .play-vid .tags a{
+    color: #0000ff;
+    font-size: 13px;
+   }
+
+   h3 {
+    color: #fff;
+   }
+
+   .play-vid h3{
+    font-weight: 600;
+    font-size: 22px;
+    color: #fff;
+   }
+
+   .play-vid .play-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    font-size: 15px;
+    color: #fff;
+   }
+
+   .play-vid .play-info img{
+    width: 20px;
+    margin-right: 8px;
+   }
+
+   .play-vid .play-info a {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 15px;
+   }
+
+   h3 {
+    margin-bottom: 0;
+    margin-top: 15px;
+   }
+
+   .play-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 30px;
+   }
+
+   .play-vid hr{
+    border: 0;
+    height: 1px;
+    background-color: #ccc;
+    margin: 10px 0 ;
+   }
+
+   .owner {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+   }
+
+   .owner div{
+    flex: 1;
+    line-height: 18px;
+   }
+
+   .owner img {
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+   }
+
+   .owner div p {
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+   }
+
+   .owner div span {
+    font-size: 13px;
+    color: #fff;
+   }
+
+   .buttonred {
+    background-color: red;
+    color: #fff;
+    padding: 8px 30px;
+    border: 0;
+    outline: 0;
+    border-radius: 4px;
+    cursor: pointer;
+   }
+
+   .buttonxam {
+    background-color: #272727;
+    color: #fff;
+    padding: 8px 30px;
+    border: 0;
+    outline: 0;
+    border-radius: 4px;
+    cursor: pointer;
+   }
+
+   .description {
+    padding-left: 55px;
+    margin: 15px 0;
+    background-color: #272727;
+    border-radius: 16px;
+   }
+
+   .description p {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #fff;
+   }
+
+   .description h4 {
+    font-size: 14px;
+    color: #fff;
+    margin-top: 15px;
+
+   }
+
+   .add-comment {
+    display: flex;
+    align-items: center;
+    margin: 30px 0;
+
+   }
+
+   .add-comment img {
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+   }
+
+   .add-comment input {
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    padding-top: 10px;
+    background: whitesmoke;
+   }
+
+   .prev-comment{
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+   }
+
+   .prev-comment img {
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+   }
+
+   .prev-comment h3 {
+    font-size: 14px;
+    margin-bottom: 2px;
+   }
+
+   .prev-comment h3 span{
+    font-size: 12px;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 5px;
+   }
+
+   /* --------------------------- */
+   .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    color: #f9fafb;
+    padding: 0 40px;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(16, 18, 27, 40%);
+  }
+
+  .apps-card {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .content-section {
+    margin-top: 30px;
+  }
