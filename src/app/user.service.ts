@@ -45,4 +45,8 @@ export class UserService {
     const params = ids.join('&ids=');
     return this.httpClient.get<Array<UserDto>>("http://localhost:8080/api/user/byIds?ids="+params)
   }
+
+  getUserById(userId: string): Observable<UserDto> {
+    return this.httpClient.get<UserDto>("http://localhost:8080/api/user/"+userId)
+  }
 }

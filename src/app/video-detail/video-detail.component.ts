@@ -5,6 +5,7 @@ import { VideoService } from '../video.service';
 import { KeycloakEventType, KeycloakService } from 'keycloak-angular';
 import { UserService } from '../user.service';
 import { VideoDto } from '../video-dto';
+import { ReloadService } from '../reload.service';
 
 @Component({
   selector: 'app-video-detail',
@@ -14,6 +15,7 @@ import { VideoDto } from '../video-dto';
 export class VideoDetailComponent implements OnInit {
 
   userDto!: UserDto
+  userById!: UserDto
 
   suggestVideos: Array<VideoDto> = []
 
@@ -30,10 +32,14 @@ export class VideoDetailComponent implements OnInit {
   showSubscribeButton: boolean = true;
   showUnSubscribeButton: boolean = false;
 
+  fullName!: string
+  img!: string
+
   constructor(private activatedRoute: ActivatedRoute,
              private videoService: VideoService,
               private keycloakService: KeycloakService,
               private userService: UserService,
+              private reloadService: ReloadService
               ) {
                 
     // this.keycloakService.keycloakEvents$.subscribe((event) => {
@@ -59,12 +65,23 @@ export class VideoDetailComponent implements OnInit {
             this.dislikeCount = data.dislikeCount
             this.viewCount = data.viewCount
             this.userId = data.userId;
+
+            this.userService.getUserById(data.userId).subscribe(data1 => {
+              this.fullName = data1.fullName
+              this.img = data1.image
+            })
             console.log("value:",data)
           })
       
           this.videoService.getVideosSortedByViewCount().subscribe(response => {
             this.suggestVideos = response
           })
+
+          this.reloadService.reload$.subscribe(() => {
+            this.reloadComponent();
+          });
+
+          
           
   }
 
@@ -105,6 +122,11 @@ export class VideoDetailComponent implements OnInit {
     this.userService.getCurrentUser().subscribe(data => {
       this.userService.listUserId = this.userDto.subscribedToUsers
     })
+  }
+
+  reloadComponent() {
+    // Logic để reload component cha
+    console.log('Reloaded component cha');
   }
 
 

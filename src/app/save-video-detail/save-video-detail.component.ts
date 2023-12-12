@@ -136,6 +136,7 @@ saveVideo() {
     "title": this.saveVideoDetailsForm.get('title')?.value,
     "description": this.saveVideoDetailsForm.get('description')?.value,
     "userId": this.userDto.id,
+    "author":this.userDto.fullName,
     "tags": this.tags,
     "videoStatus": this.saveVideoDetailsForm.get('videoStatus')?.value,
     "theloaiVideo": this.saveVideoDetailsForm.get('theloaiVideo')?.value,

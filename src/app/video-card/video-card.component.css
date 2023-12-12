@@ -86,3 +86,13 @@
     -moz-border-radius: 50px;
     -o-border-radius: 50px;
   }
+
+  .check {
+    display: flex;
+    align-items: center;
+  }
+
+  .checklocation {
+    margin-bottom: 12px;
+    margin-left: 5px;
+  }

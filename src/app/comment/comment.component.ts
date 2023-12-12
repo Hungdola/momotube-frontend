@@ -49,6 +49,7 @@ export class CommentComponent {
   getComments() {
     this.commentService.getAllComments(this.videoId).subscribe(data => {
       this.commentsDto = data;
+      console.log(this.commentsDto)
     });
   }
 

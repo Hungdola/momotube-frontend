@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { SecurityService } from '../security.service';
-import { KeycloakService } from 'keycloak-angular';
+import { KeycloakEventType, KeycloakService } from 'keycloak-angular';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { VideoService } from '../video.service';
 import { VideoDto } from '../video-dto';
+import { UserDto } from '../user-dto';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +15,7 @@ import { VideoDto } from '../video-dto';
 })
 export class HeaderComponent implements OnInit {
 
+  userDto!: UserDto
 
   value!:string;
   searchVideos: Array<VideoDto> = []
@@ -29,12 +32,23 @@ export class HeaderComponent implements OnInit {
   accessToken: string | undefined;
   searchkeyword!: string
 
-  constructor(public securityService: SecurityService, private keycloakService: KeycloakService,
-     private router: Router, private formBuilder: FormBuilder, private videoService: VideoService) {
+  constructor(public securityService: SecurityService, private keycloakService: KeycloakService, private userService: UserService,
+     private router: Router, private formBuilder: FormBuilder, private videoService: VideoService, ) {
   }
   ngOnInit(): void {
-    
+    this.keycloakService.keycloakEvents$.subscribe((event) => {
+      if (event.type === KeycloakEventType.OnAuthSuccess) {
+        this.getCurrentUser()
+      } 
+    });
   }
+
+  getCurrentUser() {
+    this.userService.getCurrentUser().subscribe(data => {
+      this.userDto = data;
+    })
+  }
+
 
   async login() {
     await this.securityService.kcService.login({

@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { VideoDto } from '../video-dto';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ReloadService } from '../reload.service';
 
 @Component({
   selector: 'app-video-card-small',
@@ -10,5 +12,9 @@ export class VideoCardSmallComponent {
   @Input()
   video!: VideoDto;
 
-  constructor() {}
+  constructor(private reloadService: ReloadService) {}
+
+  reloadComponent() {
+    this.reloadService.triggerReload();
+  }
 }

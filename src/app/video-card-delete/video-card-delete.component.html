@@ -6,7 +6,7 @@
         <p>{{video.description}}</p>
         <div class="channel-info">
             <img src="https://placekitten.com/40/40" alt="Channel Avatar" class="channel-avatar">
-            <div class="channel-name">HUNG TRAN</div>
+            <div class="channel-name">{{video.author}}</div>
         </div>
     </div>
     <button mat-raised-button class="buttonred" (click)="deleteVideo(video.id)">Delete</button>

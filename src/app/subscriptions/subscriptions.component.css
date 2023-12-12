@@ -10,6 +10,9 @@
     height: 58px;
     flex-shrink: 0;
 
+    position: fixed;
+    top: 68px;
+    background-color: #0f0f0f;
     z-index: 900;
 }
 
@@ -50,6 +53,8 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(16, 18, 27, 40%);
+
+    margin-top: 110px;
   }
 
   .apps-card {

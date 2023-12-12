@@ -3,6 +3,7 @@ import { VideoDto } from '../video-dto';
 import { VideoService } from '../video.service';
 import { UserService } from '../user.service';
 import { UserDto } from '../user-dto';
+import { CommentsService } from '../comments.service';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { UserDto } from '../user-dto';
 export class ThongKeComponent implements OnInit {
   myVideos: Array<VideoDto> = []
 
-  constructor(private videoService: VideoService, private userService: UserService) {
+  constructor(private videoService: VideoService, private userService: UserService, private commentService: CommentsService) {
   }
   
   

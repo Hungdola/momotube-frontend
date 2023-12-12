@@ -35,7 +35,7 @@
 
 }
 
-.side-menu a.active {
+.side-menu a:active {
     color: #000;
     background-color: #e5e5e5;
 }
@@ -46,7 +46,7 @@
 
 .side-menu i{
     width: 30px;
-    color: #ee7616;
+    /* color: #ee7616; */
     margin-right: 8px;
 }
 

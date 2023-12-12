@@ -5,6 +5,7 @@ export interface UserDto {
     fullName: string
     emailAddress: string
     sub: string
+    image: string
     subscribedToUsers : Array<string>
     subscribers : Array<string>
     videoHistory : Array<string>

@@ -38,7 +38,7 @@
     <i class="fa-solid fa-sun"></i>
     <button mat-raised-button (click)="login()" *ngIf="!securityService.profile">Login</button>
     <button mat-raised-button (click)="logout()" *ngIf="securityService.profile">Logout</button>
-    <div *ngIf="securityService.profile"><img class="profile-user" src="https://hungtran.s3.ap-southeast-1.amazonaws.com/0f3c63d6-4930-4139-9cdf-70084e20b066.jpg" alt=""></div>
+    <div *ngIf="securityService.profile"><img class="profile-user" src={{userDto.image}} alt=""></div>
 
   </div>
 </div>
