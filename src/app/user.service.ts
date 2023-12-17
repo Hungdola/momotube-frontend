@@ -9,7 +9,7 @@ import { UserDto } from './user-dto';
 export class UserService {
 
   userIdnew!: string
-  userIdSelect!: string //dùng để gọi đến các channel mà user đang đăng nhập đã đăng ký
+  userIdSelect= "655398e73a306906c1da4b3b" //dùng để gọi đến các channel mà user đang đăng nhập đã đăng ký
   listUserId: Array<string> = []
 
   private userId: string = ''

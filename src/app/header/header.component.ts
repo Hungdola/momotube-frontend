@@ -57,7 +57,13 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.securityService.kcService.logout(window.location.origin).then(() => this.keycloakService.clearToken());
+    const isConfirmed = confirm("Bạn muốn Đăng Xuất?")
+    if(isConfirmed) {
+      this.securityService.kcService.logout(window.location.origin).then(() => this.keycloakService.clearToken());
+    }
+    else {
+      alert("Vẫn Duy trì Đăng Nhập")
+    }
   }
 
   searchVideo(value: string) {

@@ -70,6 +70,18 @@ export class VideoDetailComponent implements OnInit {
               this.fullName = data1.fullName
               this.img = data1.image
             })
+
+            this.userService.getCurrentUser().subscribe(data2 => {
+              if(data2.subscribedToUsers.includes(data.userId)) {
+                this.showUnSubscribeButton = true;
+                this.showSubscribeButton = false;
+              }
+              else {
+                this.showUnSubscribeButton = false;
+                this.showSubscribeButton = true;
+              }
+            })
+
             console.log("value:",data)
           })
       
@@ -80,6 +92,8 @@ export class VideoDetailComponent implements OnInit {
           this.reloadService.reload$.subscribe(() => {
             this.reloadComponent();
           });
+
+          
 
           
           

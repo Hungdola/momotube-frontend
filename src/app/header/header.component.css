@@ -75,7 +75,7 @@ body {
   font-size: 15px;
   font-weight: 500;
   padding: 0 20px 0 20px;
-  color: #000;
+  color: white;
 }
 
 .search-bar i.fa-magnifying-glass {
@@ -132,4 +132,117 @@ body {
   height: 35px;
   border-radius: 50px;
   margin-left: 22px;
+}
+
+/* --------------------------- */
+
+@keyframes headerNotifyGrowth {
+  from{
+      opacity: 0;
+      transform: scale(0);
+  }
+  to{
+      opacity: 1;
+      transform: scale(1);
+  }
+}
+
+.header__navbar-user{
+  display: flex;
+  justify-items: center;
+  position: relative;
+}
+
+.header__navbar-user:hover .header__navbar-user-menu{
+  display: block;
+}
+
+.header__navbar-user-menu{
+  position: absolute;
+  background-color: #282828;
+  top: 100%;
+  padding-left: 0;
+  right: 0;
+  border-radius: 2px;
+  width: 180px;
+  z-index: 1;
+  box-shadow: 0 0 3px black;
+  display: none;
+  transform-origin: calc(100% - 20px) top; /*di chuyển tâm của animation*/
+  animation: headerNotifyGrowth ease-in 0.2s;
+}
+
+.header__navbar-user-menu::after{
+  position: absolute;
+  display: block;
+  content: "";
+  border-color: transparent transparent #282828 transparent;
+  border-width: 8px 8px;
+  border-style: solid;
+  top: -15.5px;
+  right: 27px;
+  z-index: 0;
+}
+
+.header__navbar-user-item{
+  list-style: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding-left: 30px;
+  height: 50px;
+  
+}
+
+.signout {
+  color: white;
+}
+
+.signin {
+  color: black;
+  background-color: white;
+  height: 40px;
+  width: 75px;
+  border-radius: 10px;
+  font-weight: 400;
+}
+
+.upload-video {
+  margin-right: 0;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.header__navbar-user-item img {
+  margin-left: 0;
+}
+
+.header__navbar-user-item .signout {
+  padding-left: 0;
+}
+
+.header__navbar-user-item p{
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: 400;
+  display: block;
+  padding: 10px 16px;
+  margin-bottom: 0;
+}
+
+.header__navbar-user-item p:first-child{
+  border-top-left-radius:2px ;
+  border-top-right-radius:2px ;
+}
+
+.header__navbar-user-item p:last-child{
+  border-bottom-left-radius:2px ;
+  border-bottom-right-radius:2px ;
+}
+
+.header__navbar-user-item:hover{
+  background-color: #999ba5;
+  cursor: pointer;
 }

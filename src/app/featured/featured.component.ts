@@ -23,7 +23,7 @@ export class FeaturedComponent implements OnInit {
       if (event.type === KeycloakEventType.OnAuthSuccess) {
         this.videoService.getAllVideos().subscribe(response => {
           // console.log("respone",response)
-          this.featuredVideos = response
+          this.featuredVideos = response.slice().reverse();
         })
         this.getCurrentUser()
       } 

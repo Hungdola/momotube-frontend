@@ -29,16 +29,36 @@
     </a>
   </div>
   <div class="header-profile">
-    <i class="fa-solid fa-video" (click)="routUpload()"></i>
+    <div class="upload-video" (click)="routUpload()">
+      <i class="fa-solid fa-video"></i>
+      <i class="fa-solid fa-angles-up"></i>
+    </div>
     <!-- <div class="notification">
       <span class="notification-number">
       5 </span>
         <i class="fa-solid fa-bell"></i>
     </div> -->
-    <i class="fa-solid fa-sun"></i>
-    <button mat-raised-button (click)="login()" *ngIf="!securityService.profile">Login</button>
-    <button mat-raised-button (click)="logout()" *ngIf="securityService.profile">Logout</button>
-    <div *ngIf="securityService.profile"><img class="profile-user" src={{userDto.image}} alt=""></div>
+    <!-- <i class="fa-solid fa-sun"></i> -->
+    <button (click)="login()" *ngIf="!securityService.profile" class="signin">Login</button>
+    <!-- <button mat-raised-button (click)="logout()" *ngIf="securityService.profile">Logout</button> -->
+
+    <div class="header__navbar-item header__navbar-user">
+      <div *ngIf="securityService.profile"><img class="profile-user" src={{userDto.image}} alt=""></div>
+      
+      <ul class="header__navbar-user-menu">
+        <li class="header__navbar-user-item">
+          <img class="profile-user" src={{userDto.image}} alt="">
+          <p>{{userDto.fullName}}</p>
+        </li>
+        <li class="header__navbar-user-item" routerLink="/my-videos">
+          <p>Your channel</p>
+        </li>
+        <li class="header__navbar-user-item">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <p class="signout" (click)="logout()" *ngIf="securityService.profile">Sign Out</p>
+        </li>
+      </ul>
+    </div>
 
   </div>
 </div>

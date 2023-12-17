@@ -13,6 +13,9 @@ import { CommentsService } from '../comments.service';
 })
 export class ThongKeComponent implements OnInit {
   myVideos: Array<VideoDto> = []
+  totalView = 0
+  totalLike = 0
+  totalDislike = 0
 
   constructor(private videoService: VideoService, private userService: UserService, private commentService: CommentsService) {
   }
@@ -22,6 +25,10 @@ export class ThongKeComponent implements OnInit {
           this.videoService.getVideosByUserId(this.userService.userIdnew).subscribe(response => {
             console.log(this.myVideos)
             this.myVideos = response
+
+            this.totalView = response.reduce((total, obj) => total + obj.viewCount, 0);
+            this.totalLike = response.reduce((total, obj) => total + obj.likeCount, 0);
+            this.totalDislike = response.reduce((total, obj) => total + obj.dislikeCount, 0);
           })
     }
 }

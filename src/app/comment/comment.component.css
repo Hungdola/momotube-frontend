@@ -19,7 +19,7 @@
   }
   
   .comment-author {
-    padding-top: 10px;
+    /* padding-top: 10px; */
     font-weight: lighter;
     font-size: medium;
     text-decoration: none;
@@ -48,9 +48,9 @@
   }
 
   .img {
-    width: 30px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
-    padding-top: 10px;
   }
 
   .infoavt {

@@ -98,6 +98,11 @@
     color: #fff;
    }
 
+   .play-vid {
+    width: 1155px;
+    height: 650px;
+   }
+
    .play-vid .tags a{
     color: #0000ff;
     font-size: 13px;

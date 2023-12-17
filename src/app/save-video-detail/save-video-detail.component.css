@@ -19,3 +19,8 @@
 .labelst {
     color: wheat;
 }
+
+.videowidth {
+    max-width: 711px;
+    max-height: 400px;
+}

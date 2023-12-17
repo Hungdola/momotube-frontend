@@ -1,3 +1,7 @@
+.container {
+    margin-top: 68px;
+}
+
 .mat-title {
     font-size: 30px;
     margin: 20px 0;
@@ -14,4 +18,9 @@
 
 .labelst {
     color: wheat;
+}
+
+.videowidth {
+    max-width: 711px;
+    max-height: 400px;
 }

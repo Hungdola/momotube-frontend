@@ -1,6 +1,15 @@
 .rsize {
-    max-width: 1208px;
+    /* max-width: 1208px;
     max-height: 680px;
     min-width: 600px;
-    min-height: 337px;
+    min-height: 337px; */
+    /* width: 1155px;
+    height: 650px; */
+}
+
+.video {
+    /* max-height: 680px;
+    max-width: 1208px;
+    min-width: none;
+    min-height: none; */
 }
