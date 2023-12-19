@@ -59,3 +59,7 @@
 .left-side:hover {
     overflow: auto;
 }
+
+.side-menu .freefire {
+    color: #ff5959;
+}

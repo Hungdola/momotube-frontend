@@ -6,6 +6,7 @@ import { KeycloakEventType, KeycloakService } from 'keycloak-angular';
 import { UserService } from '../user.service';
 import { VideoDto } from '../video-dto';
 import { ReloadService } from '../reload.service';
+import { Waterm } from '../waterm';
 
 @Component({
   selector: 'app-video-detail',
@@ -32,8 +33,16 @@ export class VideoDetailComponent implements OnInit {
   showSubscribeButton: boolean = true;
   showUnSubscribeButton: boolean = false;
 
+  subscribed : boolean = true
+
   fullName!: string
   img!: string
+
+  videoUrlAndWater: Waterm = {
+    videoUrl: '',
+    imgAuthor: '',
+    // Thiết lập các giá trị khác nếu cần
+  };
 
   constructor(private activatedRoute: ActivatedRoute,
              private videoService: VideoService,
@@ -66,9 +75,13 @@ export class VideoDetailComponent implements OnInit {
             this.viewCount = data.viewCount
             this.userId = data.userId;
 
+            this.videoUrlAndWater.videoUrl = data.videoUrl
+
             this.userService.getUserById(data.userId).subscribe(data1 => {
               this.fullName = data1.fullName
               this.img = data1.image
+
+              this.videoUrlAndWater.imgAuthor = data1.image
             })
 
             this.userService.getCurrentUser().subscribe(data2 => {
@@ -81,6 +94,10 @@ export class VideoDetailComponent implements OnInit {
                 this.showSubscribeButton = true;
               }
             })
+
+            if(this.userService.userIdnew == data.userId) {
+              this.subscribed = false
+            }
 
             console.log("value:",data)
           })
@@ -141,6 +158,11 @@ export class VideoDetailComponent implements OnInit {
   reloadComponent() {
     // Logic để reload component cha
     console.log('Reloaded component cha');
+  }
+
+  redirectToPage(): void {
+    // Chuyển hướng
+    window.open(this.videoUrl, '_blank');
   }
 
 

@@ -68,6 +68,12 @@
     
    }
 
+   .icon-download {
+    font-size: 30px;
+    margin-right: 20px;
+    color: yellow;
+   }
+
    .side-list {
     display: flex;
     justify-content: space-between;

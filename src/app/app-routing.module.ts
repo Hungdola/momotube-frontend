@@ -21,6 +21,7 @@ import { VideoHoahauComponent } from './theloai/video-hoahau/video-hoahau.compon
 import { VideoSieunhanComponent } from './theloai/video-sieunhan/video-sieunhan.component';
 import { VideoHaihuocComponent } from './theloai/video-haihuoc/video-haihuoc.component';
 import { VideoTrinhdienComponent } from './theloai/video-trinhdien/video-trinhdien.component';
+import { TrendingComponent } from './trending/trending.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, 
@@ -40,6 +41,7 @@ const routes: Routes = [
     {path: 'videos-sieunhan', component: VideoSieunhanComponent},
     {path: 'videos-haihuoc', component: VideoHaihuocComponent},
     {path: 'videos-trinhdien', component: VideoTrinhdienComponent},
+    {path: 'trending', component: TrendingComponent}
   ]
 },
   {path: 'upload-video', component: UploadVideoComponent},

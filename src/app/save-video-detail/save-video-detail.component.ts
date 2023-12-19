@@ -10,6 +10,7 @@ import { VideoDto } from '../video-dto';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from '../user.service';
 import { UserDto } from '../user-dto';
+import { Waterm } from '../waterm';
 
 @Component({
   selector: 'app-save-video-detail',
@@ -40,6 +41,12 @@ thumbnailUrl!: string;
   accessToken!: string;
   videoAvailable: boolean = false
 
+  videoUrlAndWater: Waterm = {
+    videoUrl: '',
+    imgAuthor: '',
+    // Thiết lập các giá trị khác nếu cần
+  };
+
 constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService, private matSnackbar: MatSnackBar, private userService: UserService){
   // this.keycloakService.keycloakEvents$.subscribe((event) => {
   //   if (event.type === KeycloakEventType.OnAuthSuccess) {
@@ -49,6 +56,8 @@ constructor(private activatedRoute: ActivatedRoute, private videoService: VideoS
             this.videoUrl = data.videoUrl
             this.thumbnailUrl = data.thumbnailUrl
             this.videoAvailable = true
+
+            this.videoUrlAndWater.videoUrl = data.videoUrl
           })
         // }, 1900)
 

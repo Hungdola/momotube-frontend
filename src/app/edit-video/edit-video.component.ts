@@ -10,6 +10,7 @@ import { VideoDto } from '../video-dto';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from '../user.service';
 import { UserDto } from '../user-dto';
+import { Waterm } from '../waterm';
 
 @Component({
   selector: 'app-edit-video',
@@ -50,6 +51,13 @@ export class EditVideoComponent implements OnInit {
     descriptiondata!: string
     videoStatusdata!: string
     theloaiVideodata!: string
+
+
+    videoUrlAndWater: Waterm = {
+      videoUrl: '',
+      imgAuthor: '',
+      // Thiết lập các giá trị khác nếu cần
+    };
   
   constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService, private matSnackbar: MatSnackBar, private userService: UserService){
 
@@ -68,6 +76,8 @@ export class EditVideoComponent implements OnInit {
               this.descriptiondata = data.description
               this.videoStatusdata = data.videoStatus
               this.theloaiVideodata = data.theloaiVideo
+
+              this.videoUrlAndWater.videoUrl = data.videoUrl
             })
 
       this.saveVideoDetailsForm = new FormGroup({

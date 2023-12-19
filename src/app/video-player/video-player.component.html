@@ -1,4 +1,4 @@
-<vg-player  class="rsize">
+<vg-player  class="rsize" (onPlayerReady)="onPlayerReady($event)">
     <vg-overlay-play></vg-overlay-play>
     <vg-buffering></vg-buffering>
 
@@ -23,7 +23,11 @@
         <vg-fullscreen></vg-fullscreen>
     </vg-controls>
 
-    <video [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" class="video">
-        <source src={{videoUrl}} type="video/mp4">
+    <div class="watermark-container" #watermark>
+        <img src={{videoUrlAndWater?.imgAuthor}} alt="Watermark" class="watermark-image">
+      </div>
+
+    <video [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" class="video" #videoPlayer>
+        <source src={{videoUrlAndWater?.videoUrl}} type="video/mp4">
     </video>
 </vg-player>

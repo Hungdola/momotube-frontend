@@ -5,6 +5,7 @@
     min-height: 337px; */
     /* width: 1155px;
     height: 650px; */
+    position: relative;
 }
 
 .video {
@@ -13,3 +14,18 @@
     min-width: none;
     min-height: none; */
 }
+
+.watermark-container {
+    position: absolute;
+    /* top: 10px; */
+    left: 10px;
+    z-index: 999; /* Đảm bảo watermark hiển thị trên cùng */
+    pointer-events: none; /* Make sure the watermark doesn't interfere with user interactions */
+    transition: transform 1s ease-in-out;
+  }
+  
+  .watermark-image {
+    width: 50px; /* Điều chỉnh kích thước watermark theo mong muốn */
+    height: auto;
+    opacity: 0.5; /* Điều chỉnh độ mờ của watermark theo mong muốn */
+  }

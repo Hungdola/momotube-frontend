@@ -29,6 +29,7 @@ import {VgCoreModule} from '@videogular/ngx-videogular/core';
 import {VgControlsModule} from '@videogular/ngx-videogular/controls';
 import {VgOverlayPlayModule} from '@videogular/ngx-videogular/overlay-play';
 import {VgBufferingModule} from '@videogular/ngx-videogular/buffering';
+import { HotkeyModule } from 'angular2-hotkeys';
 
 import { VideoPlayerComponent } from './video-player/video-player.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -62,6 +63,7 @@ import { VideoHoahauComponent } from './theloai/video-hoahau/video-hoahau.compon
 import { VideoSieunhanComponent } from './theloai/video-sieunhan/video-sieunhan.component';
 import { VideoHaihuocComponent } from './theloai/video-haihuoc/video-haihuoc.component';
 import { VideoTrinhdienComponent } from './theloai/video-trinhdien/video-trinhdien.component';
+import { TrendingComponent } from './trending/trending.component';
 
 
 export function kcFactory(kcService: KeycloakService) {
@@ -118,6 +120,7 @@ export function kcFactory(kcService: KeycloakService) {
     VideoSieunhanComponent,
     VideoHaihuocComponent,
     VideoTrinhdienComponent,
+    TrendingComponent,
   ],
   imports: [
     BrowserModule,
@@ -152,6 +155,7 @@ export function kcFactory(kcService: KeycloakService) {
     MatSidenavModule,
     MatListModule,
     MatCardModule,
+    HotkeyModule.forRoot()
   ],
   providers: [
     { provide: APP_INITIALIZER, deps: [KeycloakService], useFactory: kcFactory, multi: true },
